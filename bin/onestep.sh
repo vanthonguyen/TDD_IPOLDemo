@@ -13,3 +13,5 @@ if [ -z "$output" ]; then
 fi
 echo thresholding -i "$iFile" -f "$outFib" -e 100 -a 25 -o "$output"
 "$dir"thresholding -i "$iFile" -f "$outFib" -e 100 -a 25 -o "$output"
+
+exit 0
