@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+
 filename=$2
 scale=$1
 outfile=$3
@@ -33,3 +34,5 @@ echo "beforeFaces" $beforeFaces
 echo "end awk"
     tail -n+"$beginFaces" "$filename" >>"$outfile"
 echo "end"
+
+exit 0
