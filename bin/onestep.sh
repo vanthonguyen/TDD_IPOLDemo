@@ -7,6 +7,7 @@ smallStep=25
 #first time
 dir="/home/vantho/ipol/demo/app/TDD_IPOLDemo/bin/"
 tempdir="/home/vantho/ipol/demo/app/TDD_IPOLDemo/tmp/"
+echo /bin/sh -c "$dir"createSmoothFib.sh "$iFile" "$tempdir$outFib" "$smallStep" 
 /bin/sh -c "$dir"createSmoothFib.sh "$iFile" "$tempdir$outFib" "$smallStep"
 
 if [ -z "$output" ]; then
