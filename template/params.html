@@ -1,0 +1,54 @@
+<%include file="header-jquery.html" />
+<script type="text/javascript">
+<%include file="js/createlinkedslider.js" />
+</script>
+
+
+<p>
+
+You can first ajust the parameters of the radius used for normal accumulation (<font color="blue"><i>R</i></font>).
+</p>
+
+
+<form action="${app.base_url + 'wait'}" method="get">
+
+  <input type="hidden" name="key" value="${app.key}">
+<div class="action">
+
+
+<ul>
+<li>
+  <!-- code for slider -->
+  <div style="float:left;padding-right:25px">
+    <label for="radius">Radius: <font color="blue"><i>R</i></font></label>
+    <input type="text" style="font-family:monospace;text-align:right"
+           size="4" id="radius" name="radius" value="6" pot = " ${app.cfg['meta']['rad']}" />
+     
+  </div>
+  <div id="radius_slider" name="radius_slider_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+  <script type="text/javascript">
+    // Turn DIV slider into a slider linked to scale
+    $(document).ready(function() {
+    createLinkedSlider('#radius', '#radius_slider', 1, 10, 0.1);
+    });
+  </script>
+  <div style="clear:both"> </div>
+  <!-- end of code for slider -->
+</li>
+
+
+
+</ul>
+
+
+<input type="submit" value="run" />
+</div>
+</form>
+
+<hr />
+
+<div>
+  <img src="${app.work_url + 'input_0.png'}" alt="${}" />
+</div>
+
+<%include file="footer.html" />
