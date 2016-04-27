@@ -7,7 +7,7 @@ first=true
 nbPoint=10000000
 index=0
 skipLines=0
-truncate -s 0 "$outfile"
+/usr/bin/truncate -s 0 "$outfile"
 while read -r line
 do
     #skip header
@@ -18,7 +18,7 @@ do
     fi
     #number of point
     if [ "$first" = true ] ; then
-        nbPoint=`echo $line | awk '{print $1}'`
+        nbPoint=`echo $line | /usr/bin/awk '{print $1}'`
         first=false
         echo $nbPoint
         echo $line >>"$outfile"
@@ -29,7 +29,8 @@ done < "$filename"
     beforeFaces=$(( nbPoint+skipLines ))
     beginFaces=$(( beforeFaces+1 ))
 echo "beforeFaces" $beforeFaces
-    head -n $beforeFaces "$filename" |tail -n $nbPoint | awk -v d="$scale" '{printf("%.3f %.3f %.3f\n",$1*d,$2*d,$3*d)}'>>"$outfile"
+    /usr/bin/head -n $beforeFaces "$filename" |tail -n $nbPoint | /usr/bin/awk -v d="$scale"\
+    '{printf("%.3f %.3f %.3f\n",$1*d,$2*d,$3*d)}'>>"$outfile"
 echo "end awk"
-    tail -n+"$beginFaces" "$filename" >>"$outfile"
+    /usr/bin/tail -n+"$beginFaces" "$filename" >>"$outfile"
 echo "end"

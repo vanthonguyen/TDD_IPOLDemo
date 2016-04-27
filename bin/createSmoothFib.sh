@@ -21,4 +21,4 @@ scaledFib=/tmp/scaledFib.xyz
 /bin/sh "$dir"scaleXyz.sh 5 $scaledFib Fib.xyz
 echo $offFile
 echo Splines -i $offFile -f Fib.xyz -o "$outFib"
-/bin/sh "$dir"Splines -i $offFile -f Fib.xyz -o "$outFib"
+"$dir"Splines -i $offFile -f Fib.xyz -o "$outFib"
