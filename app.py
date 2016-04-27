@@ -229,7 +229,7 @@ class app(base_app):
         fInfo = open(self.work_dir+"info.txt", "w")
         command_args = 'onestep.sh ' +  self.work_dir + "inputVol_0.off"
 
-        p = self.run_proc(command_args, stderr=fInfo, env={'LD_LIBRARY_PATH' : self.bin_dir})
+        p = self.run_shell(command_args, stderr=fInfo, env={'LD_LIBRARY_PATH' : self.bin_dir})
         self.wait_proc(p, timeout=120)
         fInfo.close()
         f.close()
@@ -260,3 +260,35 @@ class app(base_app):
         #    command_to_save += comp
         #self.list_commands +=  command_to_save + '\n'
         #sreturn command_to_save
+
+
+    def run_shell(self, args, stdin=None, stdout=None, stderr=None, env=None):
+        """
+        execute a sub-process from the 'tmp' folder
+        """
+
+        if env is None:
+            env = {}
+        # update the environment
+        newenv = os.environ.copy()
+        # add local environment settings
+        newenv.update(env)
+
+        # TODO clear the PATH, hard-rewrite the exec arg0
+        # TODO use shell-string execution
+
+        # Add PATH in configuration
+        path = self.bin_dir
+        if 'PATH' in env:
+            path = path + ":" + env['PATH']
+        # Check if there are extra paths (for example, for MATLAB)
+        if 'server.extra_path' in cherrypy.config:
+            path = path + ":" + cherrypy.config['server.extra_path']
+        #
+        newenv.update({'PATH' : path})
+
+        # run
+        return Popen(args, stdin=stdin, stdout=stdout, stderr=stderr,
+                     env=newenv, cwd=self.work_dir, shell=True)
+
+
