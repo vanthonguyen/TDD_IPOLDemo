@@ -233,13 +233,7 @@ class app(base_app):
         
         f = open(self.work_dir+"output.txt", "w")
         fInfo = open(self.work_dir+"info.txt", "w")
-        command_args = ['tubeAnalyse','-i', self.work_dir + "inputVol_0.off", '-r', str(radius), '-s', "4" ]
-        command_args += ['-n', "accImage.vol"]
-        command_args += ['--computeFiberPatchTrack', " fiber.sdp"] 
-        command_args += ['--exportFiberMeshOpti', "fiber.obj"]
-        command_args += ['-a', "2"]
-        command_args += ['--meshOBJ']
-        command_args += ['--fixRadiusInExportFiberMesh', "0.5"]
+        command_args = ['onestep.sh', self.work_dir + "inputVol_0.off", '-r', 'rsDefects' ]
 
         p = self.run_proc(command_args, stderr=fInfo, env={'LD_LIBRARY_PATH' : self.bin_dir})
         self.wait_proc(p, timeout=120)

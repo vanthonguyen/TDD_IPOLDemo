@@ -14,10 +14,11 @@ scaledFib=/tmp/scaledFib.xyz
 -n /tmp/accumulation.vol --fixRadiusInExportFiberMesh 1 --addSourceMeshExport $scaledFile #--invertNormal
 
 #restore
-../scaleXyz.sh 5 $scaledFib Fib.xyz
+./scaleXyz.sh 5 $scaledFib Fib.xyz
 echo $offFile
 echo Splines -i $offFile -f Fib.xyz -o "$outFib"
 ./Splines -i $offFile -f Fib.xyz -o "$outFib"
 
 #cleanup
-#rm -f Fib.xyz
+rm -f Fib.xyz
+rm -f "$scaledFile"
