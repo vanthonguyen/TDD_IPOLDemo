@@ -3,6 +3,7 @@
 offFile=$1
 outFib=$2
 iStep=$3
+echo $1
 
 dir="/home/vantho/ipol/demo/app/TDD_IPOLDemo/bin/"
 step=`echo "$iStep*0.2"|bc -l`
