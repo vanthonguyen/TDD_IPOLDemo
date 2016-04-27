@@ -6,7 +6,7 @@ iStep=$3
 echo $1
 
 dir="/home/vantho/ipol/demo/app/TDD_IPOLDemo/bin/"
-step=`echo "$iStep*0.2"|bc -l`
+step=`echo "$iStep*0.2"|/usr/bin/bc -l`
 echo $step
 
 scaledFile=${offFile%.off}-s0.2.off
