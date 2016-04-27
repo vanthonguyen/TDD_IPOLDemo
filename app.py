@@ -6,6 +6,8 @@ demo editor: Bertrand Kerautret
 from lib import base_app, build, http, image, config
 from lib.misc import app_expose, ctime
 from lib.base_app import init_app
+from subprocess import Popen
+
 
 import cherrypy
 from cherrypy import TimeoutError
