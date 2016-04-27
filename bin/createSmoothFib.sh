@@ -1,3 +1,5 @@
+#!/bin/sh
+
 offFile=$1
 outFib=$2
 iStep=$3

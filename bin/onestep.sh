@@ -1,3 +1,4 @@
+#!/bin/sh
 iFile="$1"
 output="$2"
 outFib="${iFile%.off}-fib.xyz"
