@@ -1,6 +1,19 @@
 #!/bin/sh
-iFile="$1"
-output="$2"
+while getopts i:o opt; do
+  case $opt in
+    i)
+        iFile=$OPTARG
+      ;;
+    o)
+        output=$OPTARG
+      ;;
+      exit;
+      ;;
+  esac
+done
+
+shift $(( OPTIND - 1 ));
+
 outFib="${iFile%.off}-fib.xyz"
 bigStep=100
 smallStep=25
