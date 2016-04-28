@@ -3,6 +3,7 @@ filename=$2
 scale=$1
 outfile=$3
 
+
 first=true
 nbPoint=10000000
 index=0
@@ -29,7 +30,7 @@ done < "$filename"
     beforeFaces=$(( nbPoint+skipLines ))
     beginFaces=$(( beforeFaces+1 ))
 echo "beforeFaces" $beforeFaces
-    /usr/bin/head -n $beforeFaces "$filename" |tail -n $nbPoint | /usr/bin/awk -v d="$scale"\
+    /usr/bin/head -n $beforeFaces "$filename" |/usr/bin/tail -n $nbPoint | /usr/bin/awk -v d="$scale"\
     '{printf("%.3f %.3f %.3f\n",$1*d,$2*d,$3*d)}'>>"$outfile"
 echo "end awk"
     /usr/bin/tail -n+"$beginFaces" "$filename" >>"$outfile"

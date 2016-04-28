@@ -12,7 +12,7 @@ echo $step
 scaledFile=${offFile%.off}-s0.2.off
 scaledFib=/tmp/scaledFib.xyz
 
-/bin/sh "$dir"scaleOFF.sh 0.2 $offFile $scaledFile
+/bin/bash "$dir"scaleOFF.sh 0.2 $offFile $scaledFile
 "$dir"tubeAnalyse2 -i $scaledFile -r 40 --computeFiberPatchTrack /tmp/rawfile.xyz -a 0.3 \
 --exportOptiFiber $scaledFib -s "$step" \
 -n /tmp/accumulation.vol --fixRadiusInExportFiberMesh 1 --addSourceMeshExport $scaledFile #--invertNormal
