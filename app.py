@@ -111,8 +111,9 @@ class app(base_app):
         self.cfg['meta']['is3d'] = True
         if self.cfg['meta']['is3d'] :
             baseName = (fnames[0])[0:-4]
-            radius = (fnames[0])[-7:-4]
-            self.cfg['meta']['rad'] = float(radius)
+            #radius = (fnames[0])[-7:-4]
+            radius = 50
+            #self.cfg['meta']['rad'] = float(radius)
             shutil.copy(self.input_dir +baseName+".off",
                         self.work_dir + 'inputVol_0.off')        
         self.cfg.save()
@@ -154,6 +155,7 @@ class app(base_app):
         """
 
         # save and validate the parameters
+        """
         try:
             self.cfg['param']['radius'] = kwargs['radius']
 
@@ -161,7 +163,7 @@ class app(base_app):
         except ValueError:
             return self.error(errcode='badparams',
                               errmsg="The parameters must be numeric.")
-
+        """
         http.refresh(self.base_url + 'run?key=%s' % self.key)
         return self.tmpl_out("wait.html")
 
@@ -222,17 +224,11 @@ class app(base_app):
         could also be called by a batch processor
         this one needs no parameter
         """
-        radius = self.cfg['param']['radius']
+        #radius = self.cfg['param']['radius']
         
         f = open(self.work_dir+"output.txt", "w")
         fInfo = open(self.work_dir+"info.txt", "w")
-        command_args = ['tubeAnalyse','-i', self.work_dir + "inputVol_0.off", '-r', str(radius), '-s', "4" ]
-        command_args += ['-n', "accImage.vol"]
-        command_args += ['--computeFiberPatchTrack', " fiber.sdp"] 
-        command_args += ['--exportFiberMeshOpti', "fiber.obj"]
-        command_args += ['-a', "2"]
-        command_args += ['--meshOBJ']
-        command_args += ['--fixRadiusInExportFiberMesh', "0.5"]
+        command_args = ['/bin/sh', '-c', 'onestep.sh  ${0} ${1+"$@"}', "inputVol_0.off" + ' rsDefects']
 
         p = self.run_proc(command_args, stderr=fInfo, env={'LD_LIBRARY_PATH' : self.bin_dir})
         self.wait_proc(p, timeout=120)
@@ -247,7 +243,7 @@ class app(base_app):
         display the algo results
         """
         return self.tmpl_out("result.html",
-                             height=500)
+                             height=500, width=800)
 
 
 

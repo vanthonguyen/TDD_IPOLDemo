@@ -4,7 +4,8 @@
 
 
 <p>
-  The algorithm was applied with the following parameters:
+  The algorithm was applied with a 25x100mm patch size
+
 <ul>
 
 <h2>Result</h2>
@@ -12,14 +13,14 @@
 
 
 
-<div class="gallery" style="height:${height}px">
+<div id="image3d" class="gallery" style="height:${width}px">
   <ul class="index">
 
 
   <li>
       <a href="${app.work_url + 'input_0.png'}">Input image
 	<span>
-	  <img height="${height}px" src="${app.work_url + 'input_0.png'}" alt="input" />
+	  <img width="${width}px" src="${app.work_url + 'input_0.png'}" alt="input" />
 	</span>
       </a>
     </li>
@@ -28,12 +29,16 @@
   <li> <a href="#" >3D view of tube centerline 
       <span>
 	<div style="width:490px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
-	<canvas id="cv" style="border: 1px solid;" width="${height}px" height="${height}px">
+	<canvas id="cv" style="border: 1px solid;" width="${width}px" height="${width}px">
     The visualisation used jsc3d, it looks that your navigator does not supported it, please simply download the files result.obj and result.mtl and use a standard 3d viewer.
 	</canvas> 
 </div>
 	<script type="text/javascript" src="http://ipol-geometry.loria.fr/~kerautre/ipol_demo/KnotDetectIPOLDemo/static/jsc3d.js"></script>
 	<script type="text/javascript">
+    var scHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    if ( scHeight < "${width}" ){
+        document.getElementById('image3d').style.height='600px';
+    }
 	var canvas = document.getElementById('cv');
 	var viewer = new JSC3D.Viewer(canvas);
 	var logoTimerID = 0;
@@ -81,7 +86,7 @@
 			logoTimerID = 0;
 			viewer.enableDefaultInputHandler(true);
 		}
-		viewer.replaceSceneFromUrl("${app.work_url + 'fiber.obj'}");
+		viewer.replaceSceneFromUrl("${app.work_url + 'rsDefects-defect.obj'}");
 		viewer.update();
 	}
 	</script>
