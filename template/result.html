@@ -13,7 +13,7 @@
 
 
 
-<div class="gallery" style="height:${width}px">
+<div id="image3d" class="gallery" style="height:${width}px">
   <ul class="index">
 
 
@@ -35,6 +35,10 @@
 </div>
 	<script type="text/javascript" src="http://ipol-geometry.loria.fr/~kerautre/ipol_demo/KnotDetectIPOLDemo/static/jsc3d.js"></script>
 	<script type="text/javascript">
+    var scHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    if ( scHeight < "${width}" ){
+        document.getElementById('image3d').style.height='600px';
+    }
 	var canvas = document.getElementById('cv');
 	var viewer = new JSC3D.Viewer(canvas);
 	var logoTimerID = 0;
