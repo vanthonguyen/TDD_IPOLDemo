@@ -243,7 +243,7 @@ class app(base_app):
         display the algo results
         """
         return self.tmpl_out("result.html",
-                             height=500)
+                             height=500, width=800)
 
 
 
