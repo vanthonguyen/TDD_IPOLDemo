@@ -113,7 +113,7 @@ class app(base_app):
             baseName = (fnames[0])[0:-4]
             #radius = (fnames[0])[-7:-4]
             radius = 50
-            self.cfg['meta']['rad'] = float(radius)
+            #self.cfg['meta']['rad'] = float(radius)
             shutil.copy(self.input_dir +baseName+".off",
                         self.work_dir + 'inputVol_0.off')        
         self.cfg.save()
@@ -155,6 +155,7 @@ class app(base_app):
         """
 
         # save and validate the parameters
+        """
         try:
             self.cfg['param']['radius'] = kwargs['radius']
 
@@ -162,7 +163,7 @@ class app(base_app):
         except ValueError:
             return self.error(errcode='badparams',
                               errmsg="The parameters must be numeric.")
-
+        """
         http.refresh(self.base_url + 'run?key=%s' % self.key)
         return self.tmpl_out("wait.html")
 

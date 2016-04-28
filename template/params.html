@@ -3,12 +3,12 @@
 <%include file="js/createlinkedslider.js" />
 </script>
 
-
+<!--
 <p>
 
 You can first ajust the parameters of the radius used for normal accumulation (<font color="blue"><i>R</i></font>).
 </p>
-
+-->
 
 <form action="${app.base_url + 'wait'}" method="get">
 
@@ -18,13 +18,17 @@ You can first ajust the parameters of the radius used for normal accumulation (<
 
 <ul>
 <li>
+
   <!-- code for slider -->
+  <!-- hide R -->
+  <!--
   <div style="float:left;padding-right:25px">
     <label for="radius">Radius: <font color="blue"><i>R</i></font></label>
     <input type="text" style="font-family:monospace;text-align:right"
            size="4" id="radius" name="radius" value="6" pot = " ${app.cfg['meta']['rad']}" />
      
   </div>
+  
   <div id="radius_slider" name="radius_slider_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
   <script type="text/javascript">
     // Turn DIV slider into a slider linked to scale
@@ -33,6 +37,7 @@ You can first ajust the parameters of the radius used for normal accumulation (<
     });
   </script>
   <div style="clear:both"> </div>
+  -->
   <!-- end of code for slider -->
 </li>
 
