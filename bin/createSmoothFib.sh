@@ -8,7 +8,7 @@ echo $1
 step=`echo "$iStep*0.2"|/usr/bin/bc -l`
 
 scaledFile=${offFile%.off}-s0.2.off
-scaledFib=/tmp/scaledFib.xyz
+scaledFib=scaledFib.xyz
 
 scaleOFF.sh 0.2 $offFile $scaledFile
 tubeAnalyse2 -i $scaledFile -r 40 --computeFiberPatchTrack rawfile.xyz -a 0.3 \
