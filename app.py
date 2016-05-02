@@ -1,6 +1,6 @@
 """
-3D Geometric Analysis of Tubular Objects based on Surface Normal Accumulation
-demo editor: Bertrand Kerautret
+Segmentation of defects on log surface from terrestrial Lidar data
+demo editor: Van-Tho Nguyen  & Bertrand Kerautret
 """
 
 from lib import base_app, build, http, image, config
@@ -16,7 +16,7 @@ import time
 class app(base_app):
     """ template demo app """
 
-    title = "3D Geometric Analysis of Tubular Objects based on Surface Normal Accumulation: Online Demonstration"
+    title = "Segmentation of defects on log surface from terrestrial Lidar data: Online Demonstration"
     xlink_article = 'http://www.ipol.im/'
     xlink_src = 'http://www.ipol.im/pub/pre/67/gjknd_1.1.tgz'
     dgtal_src = 'https://github.com/kerautret/DGtal.git'
